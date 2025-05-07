@@ -1,4 +1,4 @@
-import { createClient } from "../../../../utils/supabase/server";
+import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import ArchivedNoteItem from "../components/archived-note-item";
@@ -28,12 +28,12 @@ export default async function ArchivedNotesPage() {
   }
 
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto p-4">
-      <div className="flex justify-between items-center mb-8">
+    <div className="mx-auto flex w-full max-w-4xl flex-col p-4">
+      <div className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Archived Notes</h1>
         <Link
           href="/dashboard"
-          className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+          className="rounded-md border border-gray-300 px-4 py-2 transition-colors hover:bg-gray-50"
         >
           Back to Dashboard
         </Link>
@@ -46,9 +46,9 @@ export default async function ArchivedNotesPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12">
-          <h2 className="text-xl font-semibold mb-2">No archived notes</h2>
-          <p className="text-gray-600 mb-6">Archived notes will appear here.</p>
+        <div className="py-12 text-center">
+          <h2 className="mb-2 text-xl font-semibold">No archived notes</h2>
+          <p className="mb-6 text-gray-600">Archived notes will appear here.</p>
           <Link
             href="/dashboard"
             className="text-indigo-600 hover:text-indigo-800"

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "../../../../utils/supabase/client";
+import { createClient } from "@/supabase/client";
 
 type ArchivedNoteItemProps = {
   note: {
@@ -41,7 +41,7 @@ export default function ArchivedNoteItem({ note }: ArchivedNoteItemProps) {
   async function handleDelete() {
     if (
       !confirm(
-        "Are you sure you want to permanently delete this note? This action cannot be undone."
+        "Are you sure you want to permanently delete this note? This action cannot be undone.",
       )
     ) {
       return;
@@ -63,10 +63,10 @@ export default function ArchivedNoteItem({ note }: ArchivedNoteItemProps) {
   }
 
   return (
-    <div className="border border-gray-200 rounded-lg p-4 hover:shadow-sm">
-      <h2 className="text-xl font-semibold mb-2 truncate">{note.title}</h2>
-      <p className="text-gray-600 truncate mb-4">{note.content}</p>
-      <div className="flex justify-between items-center">
+    <div className="rounded-lg border border-gray-200 p-4 hover:shadow-sm">
+      <h2 className="mb-2 truncate text-xl font-semibold">{note.title}</h2>
+      <p className="mb-4 truncate text-gray-600">{note.content}</p>
+      <div className="flex items-center justify-between">
         <span className="text-sm text-gray-500">
           {new Date(note.updated_at).toLocaleDateString()}
         </span>
@@ -74,14 +74,14 @@ export default function ArchivedNoteItem({ note }: ArchivedNoteItemProps) {
           <button
             onClick={handleRestore}
             disabled={isRestoring}
-            className="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors disabled:opacity-70"
+            className="rounded-md bg-indigo-600 px-3 py-1 text-sm text-white transition-colors hover:bg-indigo-700 disabled:opacity-70"
           >
             {isRestoring ? "Restoring..." : "Restore"}
           </button>
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className="px-3 py-1 text-sm bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors disabled:opacity-70"
+            className="rounded-md bg-red-600 px-3 py-1 text-sm text-white transition-colors hover:bg-red-700 disabled:opacity-70"
           >
             {isDeleting ? "Deleting..." : "Delete"}
           </button>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "../../../../utils/supabase/client";
+import { createClient } from "@/supabase/client";
 
 type NoteFormProps = {
   userId: string;
@@ -76,13 +76,13 @@ export default function NoteForm({ userId, note }: NoteFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        <div className="rounded border border-red-200 bg-red-50 px-4 py-3 text-red-700">
           {error}
         </div>
       )}
 
       <div>
-        <label htmlFor="title" className="block text-sm font-medium mb-1">
+        <label htmlFor="title" className="mb-1 block text-sm font-medium">
           Title
         </label>
         <input
@@ -90,21 +90,21 @@ export default function NoteForm({ userId, note }: NoteFormProps) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
           placeholder="Note title"
           required
         />
       </div>
 
       <div>
-        <label htmlFor="content" className="block text-sm font-medium mb-1">
+        <label htmlFor="content" className="mb-1 block text-sm font-medium">
           Content
         </label>
         <textarea
           id="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[200px]"
+          className="min-h-[200px] w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
           placeholder="Write your note here..."
         />
       </div>
@@ -112,14 +112,14 @@ export default function NoteForm({ userId, note }: NoteFormProps) {
       <div className="flex justify-between">
         <Link
           href="/dashboard"
-          className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+          className="rounded-md border border-gray-300 px-4 py-2 transition-colors hover:bg-gray-50"
         >
           Cancel
         </Link>
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors disabled:opacity-70"
+          className="rounded-md bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700 disabled:opacity-70"
         >
           {loading ? "Saving..." : isEditing ? "Update Note" : "Create Note"}
         </button>

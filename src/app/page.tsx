@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createClient } from "../../utils/supabase/server";
+import { createClient } from "@/supabase/server";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -8,9 +8,9 @@ export default async function Home() {
   const user = data?.user;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center">
-      <h1 className="text-4xl font-bold mb-6">Welcome to AI Notes</h1>
-      <p className="text-xl mb-8 max-w-2xl">
+    <div className="flex min-h-screen flex-col items-center justify-center p-8 text-center">
+      <h1 className="mb-6 text-4xl font-bold">Welcome to AI Notes</h1>
+      <p className="mb-8 max-w-2xl text-xl">
         Your secure and intelligent note-taking application powered by Supabase
         authentication
       </p>
@@ -18,7 +18,7 @@ export default async function Home() {
         {user ? (
           <Link
             href="/dashboard"
-            className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+            className="rounded-md bg-indigo-600 px-6 py-3 text-white transition-colors hover:bg-indigo-700"
           >
             Go to Dashboard
           </Link>
@@ -26,13 +26,13 @@ export default async function Home() {
           <>
             <Link
               href="/login"
-              className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+              className="rounded-md bg-indigo-600 px-6 py-3 text-white transition-colors hover:bg-indigo-700"
             >
               Login
             </Link>
             <Link
               href="/signup"
-              className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+              className="rounded-md bg-green-600 px-6 py-3 text-white transition-colors hover:bg-green-700"
             >
               Sign Up
             </Link>

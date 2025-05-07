@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { createClient } from "../../../utils/supabase/client";
+import { createClient } from "@/supabase/client";
 import { User } from "@supabase/supabase-js";
 
 export default function AccountForm({ user }: { user: User }) {
@@ -75,7 +75,7 @@ export default function AccountForm({ user }: { user: User }) {
           type="text"
           value={user?.email}
           disabled
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 shadow-sm"
         />
       </div>
       <div>
@@ -87,7 +87,7 @@ export default function AccountForm({ user }: { user: User }) {
           type="text"
           value={fullname || ""}
           onChange={(e) => setFullname(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
         />
       </div>
       <div>
@@ -99,7 +99,7 @@ export default function AccountForm({ user }: { user: User }) {
           type="text"
           value={username || ""}
           onChange={(e) => setUsername(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
         />
       </div>
       <div>
@@ -111,12 +111,12 @@ export default function AccountForm({ user }: { user: User }) {
           type="url"
           value={website || ""}
           onChange={(e) => setWebsite(e.target.value)}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none"
         />
       </div>
       <div className="space-y-2">
         <button
-          className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none"
           onClick={() => updateProfile()}
           disabled={loading}
         >
@@ -124,7 +124,7 @@ export default function AccountForm({ user }: { user: User }) {
         </button>
         <form action="/auth/signout" method="post">
           <button
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            className="w-full rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none"
             type="submit"
           >
             Sign out

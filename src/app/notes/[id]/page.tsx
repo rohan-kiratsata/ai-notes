@@ -1,4 +1,4 @@
-import { createClient } from "../../../../utils/supabase/server";
+import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import NoteActions from "../components/note-actions";
@@ -28,19 +28,19 @@ export default async function NotePage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="flex flex-col w-full max-w-3xl mx-auto p-4">
-      <div className="flex justify-between items-center mb-8">
+    <div className="mx-auto flex w-full max-w-3xl flex-col p-4">
+      <div className="mb-8 flex items-center justify-between">
         <Link
           href="/dashboard"
-          className="text-indigo-600 hover:text-indigo-800 transition-colors"
+          className="text-indigo-600 transition-colors hover:text-indigo-800"
         >
           &larr; Back to Dashboard
         </Link>
         <NoteActions noteId={note.id} />
       </div>
 
-      <h1 className="text-3xl font-bold mb-4">{note.title}</h1>
-      <div className="text-sm text-gray-500 mb-6">
+      <h1 className="mb-4 text-3xl font-bold">{note.title}</h1>
+      <div className="mb-6 text-sm text-gray-500">
         Last updated: {new Date(note.updated_at).toLocaleString()}
       </div>
 

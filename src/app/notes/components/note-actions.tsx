@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "../../../../utils/supabase/client";
+import { createClient } from "@/supabase/client";
 
 type NoteActionsProps = {
   noteId: string;
@@ -18,7 +18,7 @@ export default function NoteActions({ noteId }: NoteActionsProps) {
   async function handleDelete() {
     if (
       !confirm(
-        "Are you sure you want to delete this note? This action cannot be undone."
+        "Are you sure you want to delete this note? This action cannot be undone.",
       )
     ) {
       return;
@@ -62,21 +62,21 @@ export default function NoteActions({ noteId }: NoteActionsProps) {
     <div className="flex space-x-2">
       <Link
         href={`/notes/${noteId}/edit`}
-        className="px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+        className="rounded-md bg-indigo-600 px-3 py-1.5 text-white transition-colors hover:bg-indigo-700"
       >
         Edit
       </Link>
       <button
         onClick={handleArchive}
         disabled={isArchiving}
-        className="px-3 py-1.5 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors disabled:opacity-70"
+        className="rounded-md bg-gray-600 px-3 py-1.5 text-white transition-colors hover:bg-gray-700 disabled:opacity-70"
       >
         {isArchiving ? "Archiving..." : "Archive"}
       </button>
       <button
         onClick={handleDelete}
         disabled={isDeleting}
-        className="px-3 py-1.5 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors disabled:opacity-70"
+        className="rounded-md bg-red-600 px-3 py-1.5 text-white transition-colors hover:bg-red-700 disabled:opacity-70"
       >
         {isDeleting ? "Deleting..." : "Delete"}
       </button>
