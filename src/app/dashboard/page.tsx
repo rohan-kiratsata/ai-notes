@@ -1,33 +1,28 @@
-import { createClient } from "@/supabase/server";
-
-import { redirect } from "next/navigation";
 import Header from "@/components/dashboard/header";
 import Note from "@/components/global/note";
+import { Note as NoteType } from "@/types/note";
 import Image from "next/image";
 
 export default async function DashboardPage() {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-
-  if (userError || !user) {
-    redirect("/login");
-  }
-
-  // Fetch user's notes
-  const { data: notes, error: notesError } = await supabase
-    .from("notes")
-    .select("*")
-    .eq("user_id", user.id)
-    .eq("is_archived", false)
-    .order("created_at", { ascending: false });
-
-  if (notesError) {
-    console.error("Error fetching notes:", notesError);
-  }
+  //  dummy data
+  const notes: NoteType[] = [
+    {
+      id: "1",
+      title: "Note 1",
+      content: "Content 1",
+      is_archived: false,
+      created_at: "2021-01-01",
+      updated_at: "2021-01-01",
+    },
+    {
+      id: "2",
+      title: "Note 2",
+      content: "Content 2",
+      is_archived: false,
+      created_at: "2021-01-01",
+      updated_at: "2021-01-01",
+    },
+  ];
 
   return (
     <div className="mx-auto my-3 max-w-5xl">
