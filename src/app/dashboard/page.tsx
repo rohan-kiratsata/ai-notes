@@ -27,7 +27,7 @@ export default async function DashboardPage() {
   return (
     <div className="mx-auto my-3 max-w-5xl">
       <Header />
-      <div className="relative grid grid-cols-4 gap-4">
+      <div className="relative flex gap-4">
         {notes && notes.length > 0 ? (
           notes.map((note) => <Note key={note.id} note={note} />)
         ) : (
