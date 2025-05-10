@@ -9,12 +9,13 @@ const prisma = new PrismaClient();
 const router = Router();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// @ts-ignore
 router.post("/request-magic-link", async (req: Request, res: Response) => {
   const { email } = req.body;
 
-  if (!email || typeof email !== "string")
-    return res.status(400).json({ error: "Valid email is required" });
+  if (!email || typeof email !== "string") {
+    res.status(400).json({ error: "Valid email is required" });
+    return;
+  }
 
   try {
     let user = await prisma.user.findUnique({ where: { email } });
@@ -48,12 +49,20 @@ router.post("/request-magic-link", async (req: Request, res: Response) => {
               <p><a href="${magic_link}">${magic_link}</a></p>
             `,
     });
-
-    return res.status(200).json({ success: true });
+    res.status(200).json({ success: true });
+    return;
   } catch (error) {
     console.error("Error occured at Magic Link request:", error);
-    return res.status(500).json({ error: "Failed to send magic link" });
+    res.status(500).json({ error: "Failed to send magic link" });
+    return;
   }
 });
 
 export = router;
+
+/**
+ * in express 5
+ * must return void | Promise<void>
+ * don't return res || Response (typescript only)
+ *
+ */
