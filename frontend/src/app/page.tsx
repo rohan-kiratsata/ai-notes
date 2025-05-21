@@ -1,6 +1,5 @@
 "use client";
 
-import { DotPattern } from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -22,7 +21,7 @@ export default function Home() {
   const content = {
     original: {
       heading: {
-        text: ["Your notes are a mess.", "So I used AI to babysit them."],
+        text: ["Your bookmarks are a mess.", "So I used AI to babysit them."],
       },
       blocks: [
         {
@@ -34,7 +33,7 @@ export default function Home() {
         {
           text: [
             "No, Not your fault.",
-            "Your current notes weren't built for chaos.",
+            "Your current tools weren't built for chaos.",
           ],
         },
         {
@@ -78,8 +77,8 @@ export default function Home() {
       blocks: [
         {
           text: [
-            "Too many notes everywhere?",
-            "We help organize everything in one place.",
+            "Too many notes and bookmarks everywhere?",
+            "This app helps organize everything in one place.",
           ],
         },
         // {
@@ -93,7 +92,9 @@ export default function Home() {
           className: "text-white",
         },
         {
-          text: ["Save anything digital. Find it instantly with AI."],
+          text: [
+            "Your personalised visual bookmarking app. Find it instantly with AI.",
+          ],
         },
       ],
       features: [
