@@ -1,19 +1,14 @@
 model User {
-    id          String       @id @default(uuid())
-    email       String       @unique
-    createdAt   DateTime     @default(now())
-    updatedAt   DateTime     @updatedAt
-    magicTokens MagicToken[]
+    id        String   @id @default(uuid())
+    email     String   @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
 
-model MagicToken {
-    id        String   @id @default(uuid())
-    token     String   @unique
-    user      User     @relation(fields: [userId], references: [id])
-    userId    String
-    createdAt DateTime @default(now())
+model OTPToken {
+    id        String   @id @default(cuid())
+    email     String
+    otpHash   String
     expiresAt DateTime
-    isUsed    Boolean  @default(false)
-
-    @@index([token]) // indexing - for faster token lookup
+    createdAt DateTime @default(now())
 }
