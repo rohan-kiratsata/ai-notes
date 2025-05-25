@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function Header() {

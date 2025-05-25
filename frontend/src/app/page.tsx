@@ -137,36 +137,39 @@ export default function Home() {
         }}
       />
 
-      <div className="bg-background/70 relative z-10 mx-auto h-full min-h-screen max-w-3xl border-r border-l p-6 backdrop-blur-[2px]">
+      <div className="bg-background/70 relative z-10 mx-auto h-full min-h-screen max-w-3xl border-r border-l px-4 py-5 backdrop-blur-[2px] sm:p-6">
         <motion.div
           className="flex items-center justify-between"
           {...fadeInUp}
           transition={{ duration: 0.3 }}
         >
-          <h1 className="text-2xl font-semibold">Beaconite</h1>
+          <h1 className="text-xl font-semibold sm:text-2xl">Beaconite</h1>
         </motion.div>
 
         <AnimatePresence mode="wait">
           <motion.div
             key={isSimplified ? "simple-heading" : "original-heading"}
-            className="pt-10"
+            className="pt-6 sm:pt-10"
             {...fadeInUp}
             transition={{ duration: 0.3, delay: staggerDelay }}
           >
             {currentContent.heading.text.map((line, index) => (
-              <h1 key={index} className="text-4xl font-semibold">
+              <h1
+                key={index}
+                className="text-2xl font-semibold sm:text-3xl md:text-4xl"
+              >
                 {line}
               </h1>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        <div className="text-muted-foreground mt-14 space-y-6 text-xl font-medium">
+        <div className="text-muted-foreground mt-8 space-y-4 text-base font-medium sm:mt-14 sm:space-y-6 sm:text-lg md:text-xl">
           <AnimatePresence mode="wait">
             {currentContent.blocks.map((block, blockIndex) => (
               <motion.div
                 key={`${isSimplified ? "simple" : "original"}-block-${blockIndex}`}
-                className={cn("space-y-2", block.className)}
+                className={cn("space-y-1 sm:space-y-2", block.className)}
                 {...fadeInUp}
                 transition={{
                   duration: 0.3,
@@ -184,19 +187,19 @@ export default function Home() {
         <AnimatePresence mode="wait">
           <motion.div
             key={isSimplified ? "simple-features" : "original-features"}
-            className="mt-10"
+            className="mt-6 sm:mt-10"
             {...fadeInUp}
             transition={{
               duration: 0.3,
               delay: (currentContent.blocks.length + 2) * staggerDelay,
             }}
           >
-            <ul className="list-inside list-disc space-y-2 text-lg font-medium">
+            <ul className="list-inside list-disc space-y-1 text-base font-medium sm:space-y-2 sm:text-lg">
               {currentContent.features.map((feature, index) => (
-                <li key={index} className={index > 0 ? "mt-2" : ""}>
+                <li key={index} className={index > 0 ? "mt-1 sm:mt-2" : ""}>
                   {feature.title}
                   {feature.desc && (
-                    <p className="text-muted-foreground ml-4 text-base">
+                    <p className="text-muted-foreground ml-4 text-sm sm:text-base">
                       {Array.isArray(feature.desc)
                         ? feature.desc.map((line, i) => (
                             <span key={i} className="block">
@@ -213,7 +216,7 @@ export default function Home() {
         </AnimatePresence>
 
         <motion.div
-          className="mt-10"
+          className="mt-6 sm:mt-10"
           {...fadeInUp}
           transition={{
             duration: 0.3,
@@ -227,20 +230,20 @@ export default function Home() {
             <span>
               {isSimplified
                 ? "Just Sign Up"
-                : "You notes looks messy, I can fix that."}
+                : "Your notes look messy, I can fix that."}
             </span>
             <motion.span
               whileHover={{ x: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </motion.span>
           </Link>
         </motion.div>
       </div>
       <motion.button
         onClick={() => setIsSimplified(!isSimplified)}
-        className="bg-background/50 fixed bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white shadow-lg backdrop-blur-lg transition-colors hover:bg-black/30"
+        className="bg-background/50 fixed bottom-4 left-1/2 z-20 -translate-x-1/2 rounded-full border border-white/20 px-5 py-2 text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-colors hover:bg-black/30 sm:bottom-6 sm:px-8 sm:py-3 sm:text-sm"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0, y: 20 }}

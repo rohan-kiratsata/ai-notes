@@ -2,7 +2,7 @@
 
 import { type Note } from "@/types/note";
 import React, { useState } from "react";
-import { Check, Link, RefreshCcw, Trash2, X } from "lucide-react";
+import { Check, Link, RefreshCcw, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Tooltip,
